@@ -2,3 +2,6 @@ loan-approval-system\venv
 venv/
 __pycache__/
 *.pyc
+Lib
+Scripts
+pyvenv.cfg
