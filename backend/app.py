@@ -1,30 +1,28 @@
 from flask import Flask, request, jsonify
-import pickle
-import numpy as np
 from flask_cors import CORS
+from model import LoanModel
 
 app = Flask(__name__)
 CORS(app)
 
-model = pickle.load(open("loan_model.pkl", "rb"))
+loan_model = LoanModel()
 
 @app.route("/predict", methods=["POST"])
 def predict():
+
     data = request.json
-    
+
     loan = float(data["loan"])
     rate = float(data["rate"])
     time = float(data["time"])
-    
-    current_interest = (loan * rate * time) / 100
-    
-    prediction = model.predict([[loan, rate, time]])
-    
+
+    current_interest = loan_model.calculate_current_interest(loan, rate, time)
+    future_interest = loan_model.predict_future_interest(loan, rate, time)
+
     return jsonify({
         "current_interest": current_interest,
-        "future_interest": float(prediction[0])
+        "future_interest": future_interest
     })
 
 if __name__ == "__main__":
     app.run(debug=True)
-
