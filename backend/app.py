@@ -1,27 +1,26 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from model import LoanModel
+from model import loan_model   # importing trained model
 
 app = Flask(__name__)
 CORS(app)
-
-loan_model = LoanModel()
 
 @app.route("/predict", methods=["POST"])
 def predict():
 
     data = request.json
 
-    loan = float(data["loan"])
-    rate = float(data["rate"])
-    time = float(data["time"])
+    # Example input (You must match dataset features later)
+    input_data = [[
+        float(data["loan"]),
+        float(data["rate"]),
+        float(data["time"])
+    ]]
 
-    current_interest = loan_model.calculate_current_interest(loan, rate, time)
-    future_interest = loan_model.predict_future_interest(loan, rate, time)
+    prediction = loan_model.predict(input_data)
 
     return jsonify({
-        "current_interest": current_interest,
-        "future_interest": future_interest
+        "prediction": int(prediction[0])
     })
 
 if __name__ == "__main__":
