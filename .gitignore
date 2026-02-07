@@ -1,4 +1,4 @@
-loan_approval_sustem
+loan-approval-system\venv
 venv/
 __pycache__/
 *.pyc
