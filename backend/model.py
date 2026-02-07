@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 
 # Load dataset
-df = pd.read_csv('../data/LoanApprovalPrediction.csv')
+df = pd.read_csv(r'C:\Users\balaj\OneDrive\Desktop\Loan_Approval_System\Dataset\LoanApprovalPrediction.csv')
 
 # Drop ID column
 df.drop('Loan_ID', axis=1, inplace=True)
