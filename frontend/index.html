@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOAN APPROVAL SYSTEM</title>
+    <title>ML Loan Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the Loan Approval System</h1>
-    <button onclick="checkLoan()">Check Loan Status</button>
-<p id="result"></p>
+
+<h2>Smart Loan Calculator</h2>
+
+<input id="loan" placeholder="Loan Amount">
+<input id="rate" placeholder="Interest Rate">
+<input id="time" placeholder="Time (Years)">
+
+<button onclick="calculate()">Calculate</button>
+
+<h3 id="current"></h3>
+<h3 id="future"></h3>
 
 <script src="script.js"></script>
+
 </body>
 </html>
